@@ -2,22 +2,26 @@
  * @param {number[]} nums
  * @return {boolean}
  */
-var containsDuplicate = function(nums) {
+function containsDuplicate (nums) {
     
-    console.log(nums);
     
-    //For loop use index i to walk all the array
-    //For loop use index j + 1 to walk the array
+    
+   //Create a space memory
+   //Go throug array and see if what i see now, is something that i have seen before 
+    //If my number is never seen before, save in space memory
+    //If the number does not exists in memory, return true;
+    //For loop to walk thorugh the array
 
- for (let i = 0; i < nums.length; ++ i) {
-        for (let j = 0; j < i; ++ j) {
-            if (nums[i] == nums[j]) {
-                return true;
-            }
+    let map = {};
+    
+    for(let i = 0;  i < nums.length; i ++){
+        if(map[nums[i]] === undefined){
+            map[nums[i]] = "exists";
+        }else{
+            return true;
         }
     }
     return false;
-    
 };
 
 
