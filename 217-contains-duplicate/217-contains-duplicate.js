@@ -8,11 +8,10 @@ function containsDuplicate (nums) {
    // nums = [1,2,3,1]
    // sort the array  to nums = [1,1,2,3] In this case the repeated element will be next to the first, and it will be ascending order, maybe we do not need to walk thrhouh all the arrayt=
    //Go through array and see if what i see now, is something that i have seen before 
-    //For loop to walk thorugh the array
+   //For loop to walk thorugh the array
     
-    console.log(nums);
+    
     nums.sort((a,b)=>{return a - b});
-    console.log(nums);
     for(let i = 0; i < nums.length; i ++){
         if(i > 0 && nums[i - 1] === nums[i]) return true;
     }
