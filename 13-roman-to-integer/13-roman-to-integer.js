@@ -27,3 +27,5 @@ var romanToInt = function(s) {
     
     return intNum;
 };
+
+//BigO: time complexity O(n) // memory complexity O(n)
