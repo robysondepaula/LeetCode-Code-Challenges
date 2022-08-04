@@ -10,28 +10,31 @@ var isValid = function(s) {
     
     // Create an object to store the characters
     // Create an new empty array to push data
+    // If s at index i is equal to "(", "[" or "{" do a push to the empty array receinving any of these chars "(", "[" or "{"
+    // Check if the arr.length - 1 in this case is "(" is equal to map[s[i]] in this case "(" if it is delete using pop
+    // If it is not return false
+    // Return true with the arr.length is zero, if not return false
     
-    let map = {
-        '(':')', 
-        '[':']',
-        '{':'}'
+ let map = {
+        ")": "(",
+        "]": "[",
+        "}": "{"
     }
-   
-    let stack = [];
+
+    let arr = [];
     
-    for(let char of s){
-        if(map[char]){
-            //char is the opening bracket
-            stack.push(map[char])
-        }else if (stack.length > 0 && stack[stack.length - 1] === char){
-            //char here is the closing bracket and the first stack match
-            stack.pop();
-        }else{
-            //char is the closing bracket and the first stack doesnt match
-            return false;
+    for(let i = 0; i < s.length; i ++){
+        if(s[i] === "(" || s[i] === "[" || s[i] === "{"){
+            arr.push(s[i]);
+        }
+        else{
+            if(arr[arr.length - 1] === map[s[i]]){
+                arr.pop();
+            }
+            else return false;
         }
     }
-    return stack.length === 0;
+    return arr.length === 0 ? true : false;
    
 };
 
