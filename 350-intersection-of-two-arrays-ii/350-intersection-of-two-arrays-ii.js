@@ -8,28 +8,32 @@ var intersect = function(nums1, nums2) {
     //Two array with int nums 1 and nums 2
     //Return an array with the numbers that appears at both array ex: Input: nums1 = [1,2,2,1], nums2 = [2,2]Output: [2,2] in any order;
     
+    //Create a var as nums3 to receive the new array
+    //Create a obj as hashmap to save information
+    //If the obj does not have anything then obj receive i, otherwise obj ++
+    //Do another lop to check if obj[i] is bigger then 0 if is push to salve info at the new arr nums3 and then obj[i] --
+   
+    
+let obj = {};
  let nums3 = [];
     
- for(let i = 0; i < nums1.length; i ++){
-  let val = nums1[i];
-     if(nums2.indexOf(val) != -1){
-         nums3.push(val);
-         nums2[nums2.indexOf(val)] = -1;
-     }
- }   
+    for(let i of nums1){
+        if(!obj[i]){
+            obj[i] = 1
+        }else{
+            obj[i]++
+        }
+    }
+    
+    
+    for(let i of nums2){
+        if(obj[i] > 0){
+            nums3.push(i)
+            obj[i] --
+        }
+    }
+    
     return nums3;
 };
 
-/*let intersect = (num1,num2) =>{
-  let arr = [];
-    
-   for(let i=0;i<num1.length;i++) {
-     let val = num1[i];
-     if(num2.indexOf(val) != -1) {
-        arr.push(val);
-        num2[num2.indexOf(val)] = -1;
-     }
-   }
-    
-   return arr;
-}*/
+//Big0 : time complexity O(n) /// memory complxity O(n)
